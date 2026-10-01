@@ -14,10 +14,10 @@
   <header class="site-head">
     <h1 class="title">Dry Fabrications</h1>
     <nav class="nav" aria-label="primary">
-      <a href="#about"   data-tab="about"   class="active">[ about ]</a>
-      <a href="#games"   data-tab="games">[ games ]</a>
-      <a href="#team"    data-tab="team">[ team ]</a>
-      <a href="#contact" data-tab="contact">[ contact ]</a>
+      <a href="#about"    data-tab="about"   class="active">[ about ]</a>
+      <a href="#projects" data-tab="projects">[ projects ]</a>
+      <a href="#team"     data-tab="team">[ team ]</a>
+      <a href="#contact"  data-tab="contact">[ contact ]</a>
     </nav>
   </header>
 
@@ -48,17 +48,25 @@
 </pre>
     </section>
 
-    <!-- ===================== GAMES ===================== -->
-    <section class="panel" id="games" aria-labelledby="games-h" hidden>
+    <!-- ===================== PROJECTS ===================== -->
+    <section class="panel" id="projects" aria-labelledby="projects-h" hidden>
 <pre class="box">
-+--------------------------[ GAMES ]--------------------------+
++------------------------[ PROJECTS ]-------------------------+
 |                                                             |
-|   > PROJECT_01  ::  (working title)                         |
-|     status: in development                                  |
-|     a game about building and breaking.                     |
+|   > SWAT: GUARDIAN                        (in development)  |
 |                                                             |
-|   > PROJECT_02  ::  (concept)                               |
-|     status: prototyping // more soon.                       |
+|   A cooperative 3D top-down twin-stick shooter. Drop        |
+|   into a squad of 4-8, fight relentless hordes of           |
+|   zombies, and complete objectives across partially         |
+|   randomized maps.                                          |
+|                                                             |
+|   - Co-op survival for 4-8 players.                         |
+|   - Distinct classes with their own abilities, talent       |
+|     trees, and team roles.                                  |
+|   - Persistent characters and loot with rarities and        |
+|     random modifiers.                                       |
+|   - Objective-driven missions on modular, procedurally      |
+|     assembled maps.                                         |
 |                                                             |
 +-------------------------------------------------------------+
 </pre>
@@ -120,7 +128,7 @@
 
     // Open the section named in the URL hash, else default to About
     var start = (location.hash || '#about').slice(1);
-    var valid = ['about', 'games', 'team', 'contact'];
+    var valid = ['about', 'projects', 'team', 'contact'];
     show(valid.indexOf(start) !== -1 ? start : 'about');
   </script>
 </body>
