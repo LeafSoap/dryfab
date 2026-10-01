@@ -157,6 +157,6 @@ html, body {
 }
 
 @media (max-width: 560px) {
-  .box { font-size: 11px; }
   body { font-size: 14px; }
+  .corner-logo { opacity: 0.1; }
 }

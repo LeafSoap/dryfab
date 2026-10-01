@@ -71,12 +71,18 @@
     var lines = [];
     var hang = "  "; // hanging indent for bullet continuation
 
-    // Pre-pass: widest left label across all "row" items, so names form a
-    // clean aligned column with the roles starting at the same spot.
-    var rowLeftW = 0;
+    // Pre-pass for "row" items: widest left label (so names form an aligned
+    // column) and widest right label. Decide inline-vs-stacked ONCE for the
+    // whole group so rows don't render inconsistently near the fit threshold.
+    var rowLeftW = 0, rowRightW = 0;
     items.forEach(function (it) {
-      if (it.type === "row") rowLeftW = Math.max(rowLeftW, (it.left || "").length);
+      if (it.type === "row") {
+        rowLeftW = Math.max(rowLeftW, (it.left || "").length);
+        rowRightW = Math.max(rowRightW, (it.right || "").length);
+      }
     });
+    // " - " separator = 3 chars. If the widest row fits, all rows go inline.
+    var rowsInline = (rowLeftW + 3 + rowRightW) <= inner;
 
     items.forEach(function (item) {
       switch (item.type) {
@@ -129,15 +135,14 @@
 
         case "row":
           // "left - right" with left padded to a shared column width, so a
-          // group of rows (e.g. name - role) lines up cleanly.
+          // group of rows (e.g. name - role) lines up cleanly. The whole
+          // group is inline or stacked together (decided in the pre-pass).
           var rl = item.left || "";
           var rr = item.right || "";
-          var padded = padRight(rl, rowLeftW);
-          var oneLine = padded + " - " + rr;
-          if (oneLine.length <= inner) {
-            lines.push(oneLine);
+          if (rowsInline) {
+            lines.push(padRight(rl, rowLeftW) + " - " + rr);
           } else {
-            // too narrow for a shared column: stack role under the name
+            // too narrow: stack role under the name, consistently for all rows
             lines.push(rl);
             wrap(rr, inner - 4).forEach(function (l) { lines.push("    " + l); });
           }
