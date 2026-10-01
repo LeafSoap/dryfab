@@ -5,20 +5,13 @@
    ============================================================ */
 
 :root {
-  /* Dracula palette */
-  --bg-dracula: #282a36; /* standard Dracula background (kept for reference) */
-  --bg:         #1a1b23; /* DARKENED background, a few shades below Dracula bg */
-  --current:    #6272a4;
-  --selection:  #44475a;
-  --fg:         #f8f8f2; /* ascii lines, boxes, formatting */
-  --comment:    #6272a4;
-  --red:        #ff5555;
-  --orange:     #ffb86c;
-  --yellow:     #f1fa8c; /* links */
-  --green:      #50fa7b; /* "Dry Fabrications" title */
-  --cyan:       #8be9fd;
-  --purple:     #bd93f9;
-  --pink:       #ff79c6;
+  /* Dracula palette (https://draculatheme.com) — only the colors used. */
+  --bg:      #1a1b23; /* darkened background, below Dracula's #282a36 */
+  --fg:      #f8f8f2; /* ascii lines, boxes, formatting */
+  --comment: #6272a4; /* muted / footer text */
+  --yellow:  #f1fa8c; /* links and box titles */
+  --green:   #50fa7b; /* title gradient start */
+  --cyan:    #8be9fd; /* title gradient end */
 
   --mono: "Cascadia Code", "Consolas", "SFMono-Regular", "Menlo",
           "DejaVu Sans Mono", monospace;
@@ -104,7 +97,7 @@ html, body {
 .terminal {
   max-width: 760px;
   margin: 2rem auto 4rem;
-  padding: 0 1rem;
+  padding: 0 1rem 3.5rem; /* bottom padding keeps content clear of fixed footer */
   display: flex;
   justify-content: center;
 }
@@ -112,7 +105,6 @@ html, body {
 .panel { width: 100%; }
 .panel[hidden] { display: none; }
 
-/* ASCII boxes / layout — foreground color, never wrap */
 /* ASCII boxes — content is drawn by ascii-box.js to fit the container,
    so the font size stays constant and nothing scrolls horizontally.
    Before JS runs (or if JS is off) the raw fallback text wraps normally. */
@@ -148,9 +140,6 @@ html, body {
   z-index: 10;
 }
 .dim { color: var(--comment); margin: 0; }
-
-/* keep content clear of the fixed footer */
-.terminal { padding-bottom: 3.5rem; }
 
 @media (prefers-reduced-motion: reduce) {
   .scanlines { display: none; }

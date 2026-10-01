@@ -4,12 +4,14 @@ ASCII-styled informational site for the game studio **Dry Fabrications**, hosted
 
 ## Files
 
-| File         | Purpose                                                    |
-|--------------|------------------------------------------------------------|
-| `index.html` | The entire site (hero, about, games, team, contact).       |
-| `style.css`  | ASCII / terminal aesthetic (green-on-black monospace).     |
-| `CNAME`      | Tells GitHub Pages to serve the site at `dryfabrications.com`. |
-| `.nojekyll`  | Disables Jekyll processing so files are served as-is.      |
+| File           | Purpose                                                       |
+|----------------|---------------------------------------------------------------|
+| `index.html`   | The site: tabbed single page (about, projects, team, contact).|
+| `style.css`    | ASCII / terminal aesthetic using the Dracula palette.         |
+| `ascii-box.js` | Draws the ASCII content boxes, fitted to the viewport width.  |
+| `logo.png`     | Favicon and faded corner mark.                                |
+| `CNAME`        | Tells GitHub Pages to serve the site at `dryfabrications.com`.|
+| `.nojekyll`    | Disables Jekyll processing so files are served as-is.         |
 
 ## Local preview
 
