@@ -1,13 +1,22 @@
 /* ============================================================
-   DRY FABRICATIONS // ascii terminal stylesheet
-   Monospace, green-on-black, CRT-ish. No images, pure text.
+   DRY FABRICATIONS // ascii site
+   Palette: Dracula (https://draculatheme.com) — official hex only.
    ============================================================ */
 
 :root {
-  --bg:    #0a0f0a;
-  --fg:    #33ff66;
-  --dim:   #1f8a3d;
-  --accent:#8affc1;
+  /* Dracula palette — the only colors used anywhere on this site */
+  --bg:        #282a36; /* Background   */
+  --current:   #44475a; /* Current Line / Selection */
+  --fg:        #f8f8f2; /* Foreground   */
+  --comment:   #6272a4; /* Comment      */
+  --cyan:      #8be9fd;
+  --green:     #50fa7b;
+  --orange:    #ffb86c;
+  --pink:      #ff79c6;
+  --purple:    #bd93f9;
+  --red:       #ff5555;
+  --yellow:    #f1fa8c;
+
   --mono: "Cascadia Code", "Consolas", "SFMono-Regular", "Menlo",
           "DejaVu Sans Mono", monospace;
 }
@@ -22,10 +31,9 @@ html, body {
   font-family: var(--mono);
   font-size: 15px;
   line-height: 1.4;
-  text-shadow: 0 0 2px rgba(51, 255, 102, 0.35);
 }
 
-/* faint CRT scanline overlay, drawn with a repeating gradient */
+/* faint scanline overlay, tinted with Current Line so it stays on-palette */
 .scanlines {
   position: fixed;
   inset: 0;
@@ -34,7 +42,7 @@ html, body {
     to bottom,
     rgba(0, 0, 0, 0) 0px,
     rgba(0, 0, 0, 0) 2px,
-    rgba(0, 0, 0, 0.18) 3px
+    rgba(68, 71, 90, 0.25) 3px
   );
   z-index: 9999;
 }
@@ -47,37 +55,46 @@ html, body {
 
 .block { margin-bottom: 2.5rem; }
 
-/* ASCII art blocks: never wrap, scroll horizontally on small screens */
-.art {
+/* ---- large plain-text title, top-left ---- */
+.title {
   margin: 0;
-  color: var(--accent);
-  white-space: pre;
-  overflow-x: auto;
-  font-size: 13px;
-  line-height: 1.1;
+  text-align: left;
+  font-size: clamp(2.5rem, 9vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--purple);
 }
-.art.small { font-size: 12px; color: var(--fg); }
 
 .tag {
-  color: var(--dim);
+  color: var(--comment);
   letter-spacing: 1px;
-  margin: 0.5rem 0 1.5rem;
+  margin: 0.75rem 0 1.5rem;
 }
+
+/* generic ASCII art blocks: never wrap, scroll on small screens */
+.art {
+  margin: 0;
+  color: var(--cyan);
+  white-space: pre;
+  overflow-x: auto;
+  font-size: 12px;
+  line-height: 1.1;
+}
+.art.small { font-size: 12px; color: var(--cyan); }
 
 /* navigation */
 .nav { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-.nav a,
 a {
-  color: var(--fg);
+  color: var(--cyan);
   text-decoration: none;
 }
-.nav a:hover,
-a:hover { color: var(--accent); background: var(--dim); }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+a:hover { color: var(--bg); background: var(--cyan); }
+a:focus-visible { outline: 2px solid var(--pink); outline-offset: 2px; }
 
 /* section headers + boxed content */
 .h {
-  color: var(--accent);
+  color: var(--green);
   font-weight: normal;
   font-size: 15px;
   white-space: pre;
@@ -93,19 +110,17 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* games */
 .game { margin-bottom: 1.5rem; }
-.g-title { color: var(--accent); font-size: 15px; font-weight: normal; margin: 0.25rem 0; }
-.g-desc  { color: var(--dim); margin: 0 0 0.5rem; }
+.g-title { color: var(--pink); font-size: 15px; font-weight: normal; margin: 0.25rem 0; }
+.g-desc  { color: var(--comment); margin: 0 0 0.5rem; }
 
 /* footer */
-.foot { border-top: 1px dashed var(--dim); padding-top: 1rem; }
-.dim  { color: var(--dim); }
+.foot { border-top: 1px dashed var(--comment); padding-top: 1rem; }
+.dim  { color: var(--comment); }
 
-/* respect users who dislike motion / high-contrast could disable overlay */
 @media (prefers-reduced-motion: reduce) {
   .scanlines { display: none; }
 }
 
-/* keep the big logo readable on phones */
 @media (max-width: 520px) {
   .art { font-size: 10px; }
   body { font-size: 14px; }
