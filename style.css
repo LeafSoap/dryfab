@@ -93,14 +93,24 @@ html, body {
 .panel[hidden] { display: none; }
 
 /* ASCII boxes / layout — foreground color, never wrap */
-.box {
+/* ASCII boxes — content is drawn by ascii-box.js to fit the container,
+   so the font size stays constant and nothing scrolls horizontally.
+   Before JS runs (or if JS is off) the raw fallback text wraps normally. */
+.ascii-box {
   margin: 0 auto;
-  width: max-content;
+  width: 100%;
   max-width: 100%;
-  white-space: pre;
-  overflow-x: auto;
   color: var(--fg);
   text-align: left;
+  font-family: inherit;
+  /* fallback wrapping when JS hasn't drawn the box yet */
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+/* once drawn, lines are pre-fitted; keep them literal and centered */
+.ascii-box.drawn {
+  width: max-content;
+  white-space: pre;
 }
 
 /* footer — locked to the bottom of the viewport so it stays put when

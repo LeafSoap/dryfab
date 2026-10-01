@@ -23,78 +23,75 @@
 
   <main class="terminal" role="main">
 
+    <!-- Each .ascii-box carries its content as JSON in data-box.
+         The text inside the <pre> is the no-JS fallback; the script
+         replaces it with a border-framed box fitted to the viewport. -->
+
     <!-- ===================== ABOUT (default) ===================== -->
-    <section class="panel" id="about" aria-labelledby="about-h">
-<pre class="box">
-+--------------------------[ ABOUT ]--------------------------+
-|                                                             |
-|   Dry Fabrications is an independent game studio formed     |
-|   in 2021. We started out as a software development         |
-|   studio and have since shifted our focus toward making     |
-|   games.                                                    |
-|                                                             |
-|   Over the years we've built a number of projects and       |
-|   prototypes, each one teaching us something about how we   |
-|   want to make games: tight systems, new worlds, and a      |
-|   focus on gameplay that feels great while respecting       |
-|   the player's time.                                        |
-|                                                             |
-|   We're currently heads-down on our latest project,         |
-|   working under the name "SWAT: Guardian".                  |
-|                                                             |
-|   We make the games that we want to play.                   |
-|                                                             |
-+-------------------------------------------------------------+
-</pre>
+    <section class="panel" id="about">
+      <pre class="ascii-box" data-box='{
+        "title": "ABOUT",
+        "items": [
+          { "type": "p", "text": "Dry Fabrications is an independent game studio formed in 2021. We started out as a software development studio and have since shifted our focus toward making games." },
+          { "type": "p", "text": "Over the years we have built a number of projects and prototypes, each one teaching us something about how we want to make games: tight systems, new worlds, and a focus on gameplay that feels great while respecting the player's time." },
+          { "type": "p", "text": "We are currently heads-down on our latest project, working under the name \"SWAT: Guardian\"." },
+          { "type": "p", "text": "We make the games that we want to play." }
+        ]
+      }'>Dry Fabrications is an independent game studio formed in 2021. We started out as a software development studio and have since shifted our focus toward making games.
+
+Over the years we have built a number of projects and prototypes, each one teaching us something about how we want to make games: tight systems, new worlds, and a focus on gameplay that feels great while respecting the player's time.
+
+We are currently heads-down on our latest project, working under the name "SWAT: Guardian".
+
+We make the games that we want to play.</pre>
     </section>
 
     <!-- ===================== PROJECTS ===================== -->
-    <section class="panel" id="projects" aria-labelledby="projects-h" hidden>
-<pre class="box">
-+------------------------[ PROJECTS ]-------------------------+
-|                                                             |
-|   > SWAT: GUARDIAN                        (in development)  |
-|                                                             |
-|   A cooperative 3D top-down twin-stick shooter. Drop        |
-|   into a squad of 4-8, fight relentless hordes of           |
-|   zombies, and complete objectives across partially         |
-|   randomized maps.                                          |
-|                                                             |
-|   - Co-op survival for 4-8 players.                         |
-|   - Distinct classes with their own abilities, talent       |
-|     trees, and team roles.                                  |
-|   - Persistent characters and loot with rarities and        |
-|     random modifiers.                                       |
-|   - Objective-driven missions on modular, procedurally      |
-|     assembled maps.                                         |
-|                                                             |
-+-------------------------------------------------------------+
-</pre>
+    <section class="panel" id="projects" hidden>
+      <pre class="ascii-box" data-box='{
+        "title": "PROJECTS",
+        "items": [
+          { "type": "split", "left": "> SWAT: GUARDIAN", "right": "(in development)" },
+          { "type": "gap" },
+          { "type": "p", "text": "A cooperative 3D top-down twin-stick shooter. Drop into a squad of 4-8, fight relentless hordes of zombies, and complete objectives across partially randomized maps." },
+          { "type": "gap" },
+          { "type": "li", "text": "Co-op survival for 4-8 players." },
+          { "type": "li", "text": "Distinct classes with their own abilities, talent trees, and team roles." },
+          { "type": "li", "text": "Persistent characters and loot with rarities and random modifiers." },
+          { "type": "li", "text": "Objective-driven missions on modular, procedurally assembled maps." }
+        ]
+      }'>> SWAT: GUARDIAN  (in development)
+
+A cooperative 3D top-down twin-stick shooter. Drop into a squad of 4-8, fight relentless hordes of zombies, and complete objectives across partially randomized maps.
+
+- Co-op survival for 4-8 players.
+- Distinct classes with their own abilities, talent trees, and team roles.
+- Persistent characters and loot with rarities and random modifiers.
+- Objective-driven missions on modular, procedurally assembled maps.</pre>
     </section>
 
     <!-- ===================== TEAM ===================== -->
-    <section class="panel" id="team" aria-labelledby="team-h" hidden>
-<pre class="box">
-+---------------------------[ TEAM ]--------------------------+
-|                                                             |
-|   A very small crew of people who like making things        |
-|   out of nothing.                                           |
-|                                                             |
-+-------------------------------------------------------------+
-</pre>
+    <section class="panel" id="team" hidden>
+      <pre class="ascii-box" data-box='{
+        "title": "TEAM",
+        "items": [
+          { "type": "p", "text": "A very small crew of people who like making things out of nothing." }
+        ]
+      }'>A very small crew of people who like making things out of nothing.</pre>
     </section>
 
     <!-- ===================== CONTACT ===================== -->
-    <section class="panel" id="contact" aria-labelledby="contact-h" hidden>
-<pre class="box">
-+-------------------------[ CONTACT ]-------------------------+
-|                                                             |
-|   email ....  hello@dryfabrications.com                     |
-|   itch .....  dryfabrications.itch.io                       |
-|   github ...  github.com/LeafSoap                           |
-|                                                             |
-+-------------------------------------------------------------+
-</pre>
+    <section class="panel" id="contact" hidden>
+      <pre class="ascii-box" data-box='{
+        "title": "CONTACT",
+        "items": [
+          { "type": "kv", "key": "email",  "val": "hello@dryfabrications.com" },
+          { "type": "kv", "key": "itch",   "val": "dryfabrications.itch.io" },
+          { "type": "kv", "key": "github", "val": "github.com/LeafSoap" }
+        ]
+      }'>email ....  hello@dryfabrications.com
+itch .....  dryfabrications.itch.io
+github ...  github.com/LeafSoap</pre>
     </section>
 
   </main>
@@ -103,6 +100,7 @@
     <p class="dim">(c) <span id="year">2026</span> Dry Fabrications</p>
   </footer>
 
+  <script src="ascii-box.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -114,6 +112,8 @@
       links.forEach(function (a) {
         a.classList.toggle('active', a.dataset.tab === tab);
       });
+      // Boxes in a hidden panel have zero width, so (re)draw the now-visible one.
+      if (window.AsciiBox) window.AsciiBox.renderAll();
     }
 
     // Respond to nav clicks
