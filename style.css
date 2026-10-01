@@ -50,19 +50,17 @@ html, body {
   z-index: 9999;
 }
 
-/* ---- faded logo mark, top-right ---- */
+/* ---- faded logo mark, pegged to the top-right corner ---- */
+/* logo.png is 454x176; 50% size = 227px wide */
 .corner-logo {
   position: fixed;
-  top: 1rem;
-  right: 1rem;
-  width: 144px;
+  top: 0;
+  right: 0;
+  width: 227px;
   height: auto;
   opacity: 0.3;
   pointer-events: none;
   z-index: 5;
-}
-@media (max-width: 560px) {
-  .corner-logo { width: 104px; top: 0.75rem; right: 0.75rem; }
 }
 
 /* ---- header: large plain-text title top-left + nav ---- */
@@ -75,7 +73,6 @@ html, body {
   text-align: left;
   font-size: clamp(2.25rem, 8vw, 4.5rem);
   font-weight: 700;
-  font-style: italic;
   line-height: 1;
   letter-spacing: -0.02em;
   /* left-to-right gradient: Dracula green -> cyan, clipped to the text */
