@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DRY FABRICATIONS // game studio</title>
+  <meta name="description" content="Dry Fabrications is an independent game studio. Informational site rendered entirely in ASCII." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <main class="terminal" role="main">
+
+    <!-- ===================== HERO ===================== -->
+    <header class="block" id="top">
+<pre class="art" aria-label="Dry Fabrications logo">
+ ____  ____ _  _    ____ ____ ___  ____ _ ____ ____ ___ _ ____ _  _ ____
+ |  \  |__/  \/     |___ |__| |__] |__/ | |    |__|  |  | |  | |\ | [__
+ |__/  |  \ _/\_    |    |  | |__] |  \ | |___ |  |  |  | |__| | \| ___]
+</pre>
+      <p class="tag">[ an independent game studio ]</p>
+      <nav class="nav" aria-label="primary">
+        <a href="#about">[about]</a>
+        <a href="#games">[games]</a>
+        <a href="#team">[team]</a>
+        <a href="#contact">[contact]</a>
+      </nav>
+    </header>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="block" id="about">
+      <h2 class="h">+----[ ABOUT ]--------------------------------------------+</h2>
+<pre class="box">
+|                                                         |
+|  Dry Fabrications is a small studio building strange,   |
+|  handmade games. We care about tight systems, odd       |
+|  worlds, and the texture of plain text.                 |
+|                                                         |
+|  We make things we would want to play.                  |
+|                                                         |
++---------------------------------------------------------+
+</pre>
+    </section>
+
+    <!-- ===================== GAMES ===================== -->
+    <section class="block" id="games">
+      <h2 class="h">+----[ GAMES ]--------------------------------------------+</h2>
+
+      <article class="game">
+<pre class="art small">
+  .----------------.
+  |  [ UNTITLED ]  |
+  |   ::::::::::    |
+  '----------------'
+</pre>
+        <h3 class="g-title">&gt; PROJECT_01 :: (working title)</h3>
+        <p class="g-desc">status: in development // a game about building and breaking.</p>
+      </article>
+
+      <article class="game">
+<pre class="art small">
+  .----------------.
+  |  [ UNTITLED ]  |
+  |   ~~~~~~~~~~    |
+  '----------------'
+</pre>
+        <h3 class="g-title">&gt; PROJECT_02 :: (concept)</h3>
+        <p class="g-desc">status: prototyping // more soon.</p>
+      </article>
+    </section>
+
+    <!-- ===================== TEAM ===================== -->
+    <section class="block" id="team">
+      <h2 class="h">+----[ TEAM ]---------------------------------------------+</h2>
+<pre class="box">
+|                                                         |
+|   [o_o]   a very small crew of people who like          |
+|   /|_|\   making things out of nothing.                 |
+|    | |                                                  |
+|                                                         |
++---------------------------------------------------------+
+</pre>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="block" id="contact">
+      <h2 class="h">+----[ CONTACT ]------------------------------------------+</h2>
+<pre class="box">
+|                                                         |
+|   email .... hello@dryfabrications.com                  |
+|   itch ..... dryfabrications.itch.io                    |
+|   github ... github.com/LeafSoap                        |
+|                                                         |
++---------------------------------------------------------+
+</pre>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="block foot">
+      <p>[ <a href="#top">back to top ^</a> ]</p>
+      <p class="dim">(c) <span id="year">2026</span> dry fabrications // built with ascii</p>
+    </footer>
+
+  </main>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
