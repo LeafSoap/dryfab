@@ -3,103 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DRY FABRICATIONS // game studio</title>
-  <meta name="description" content="Dry Fabrications is an independent game studio. Informational site rendered entirely in ASCII." />
+  <title>Dry Fabrications // game studio</title>
+  <meta name="description" content="Dry Fabrications is an independent game studio." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- ===================== HEADER (top-left title + nav) ===================== -->
+  <header class="site-head">
+    <h1 class="title">Dry Fabrications</h1>
+    <nav class="nav" aria-label="primary">
+      <a href="#about"   data-tab="about"   class="active">[ about ]</a>
+      <a href="#games"   data-tab="games">[ games ]</a>
+      <a href="#team"    data-tab="team">[ team ]</a>
+      <a href="#contact" data-tab="contact">[ contact ]</a>
+    </nav>
+  </header>
+
   <main class="terminal" role="main">
 
-    <!-- ===================== HERO ===================== -->
-    <header class="block" id="top">
-      <h1 class="title">dry fabrications</h1>
-      <p class="tag">[ an independent game studio ]</p>
-      <nav class="nav" aria-label="primary">
-        <a href="#about">[about]</a>
-        <a href="#games">[games]</a>
-        <a href="#team">[team]</a>
-        <a href="#contact">[contact]</a>
-      </nav>
-    </header>
-
-    <!-- ===================== ABOUT ===================== -->
-    <section class="block" id="about">
-      <h2 class="h">+----[ ABOUT ]--------------------------------------------+</h2>
+    <!-- ===================== ABOUT (default) ===================== -->
+    <section class="panel" id="about" aria-labelledby="about-h">
 <pre class="box">
-|                                                         |
-|  Dry Fabrications is a small studio building strange,   |
-|  handmade games. We care about tight systems, odd       |
-|  worlds, and the texture of plain text.                 |
-|                                                         |
-|  We make things we would want to play.                  |
-|                                                         |
-+---------------------------------------------------------+
++--------------------------[ ABOUT ]--------------------------+
+|                                                             |
+|   Dry Fabrications is a small studio building strange,      |
+|   handmade games. We care about tight systems, odd          |
+|   worlds, and the texture of plain text.                    |
+|                                                             |
+|   We make things we would want to play.                     |
+|                                                             |
++-------------------------------------------------------------+
 </pre>
     </section>
 
     <!-- ===================== GAMES ===================== -->
-    <section class="block" id="games">
-      <h2 class="h">+----[ GAMES ]--------------------------------------------+</h2>
-
-      <article class="game">
-<pre class="art small">
-  .----------------.
-  |  [ UNTITLED ]  |
-  |   ::::::::::    |
-  '----------------'
+    <section class="panel" id="games" aria-labelledby="games-h" hidden>
+<pre class="box">
++--------------------------[ GAMES ]--------------------------+
+|                                                             |
+|   > PROJECT_01  ::  (working title)                         |
+|     status: in development                                  |
+|     a game about building and breaking.                     |
+|                                                             |
+|   > PROJECT_02  ::  (concept)                               |
+|     status: prototyping // more soon.                       |
+|                                                             |
++-------------------------------------------------------------+
 </pre>
-        <h3 class="g-title">&gt; PROJECT_01 :: (working title)</h3>
-        <p class="g-desc">status: in development // a game about building and breaking.</p>
-      </article>
-
-      <article class="game">
-<pre class="art small">
-  .----------------.
-  |  [ UNTITLED ]  |
-  |   ~~~~~~~~~~    |
-  '----------------'
-</pre>
-        <h3 class="g-title">&gt; PROJECT_02 :: (concept)</h3>
-        <p class="g-desc">status: prototyping // more soon.</p>
-      </article>
     </section>
 
     <!-- ===================== TEAM ===================== -->
-    <section class="block" id="team">
-      <h2 class="h">+----[ TEAM ]---------------------------------------------+</h2>
+    <section class="panel" id="team" aria-labelledby="team-h" hidden>
 <pre class="box">
-|                                                         |
-|   [o_o]   a very small crew of people who like          |
-|   /|_|\   making things out of nothing.                 |
-|    | |                                                  |
-|                                                         |
-+---------------------------------------------------------+
++---------------------------[ TEAM ]--------------------------+
+|                                                             |
+|   A very small crew of people who like making things        |
+|   out of nothing.                                           |
+|                                                             |
++-------------------------------------------------------------+
 </pre>
     </section>
 
     <!-- ===================== CONTACT ===================== -->
-    <section class="block" id="contact">
-      <h2 class="h">+----[ CONTACT ]------------------------------------------+</h2>
+    <section class="panel" id="contact" aria-labelledby="contact-h" hidden>
 <pre class="box">
-|                                                         |
-|   email .... hello@dryfabrications.com                  |
-|   itch ..... dryfabrications.itch.io                    |
-|   github ... github.com/LeafSoap                        |
-|                                                         |
-+---------------------------------------------------------+
++-------------------------[ CONTACT ]-------------------------+
+|                                                             |
+|   email ....  hello@dryfabrications.com                     |
+|   itch .....  dryfabrications.itch.io                       |
+|   github ...  github.com/LeafSoap                           |
+|                                                             |
++-------------------------------------------------------------+
 </pre>
     </section>
 
-    <!-- ===================== FOOTER ===================== -->
-    <footer class="block foot">
-      <p>[ <a href="#top">back to top ^</a> ]</p>
-      <p class="dim">(c) <span id="year">2026</span> dry fabrications // built with ascii</p>
-    </footer>
-
   </main>
+
+  <footer class="foot">
+    <p class="dim">(c) <span id="year">2026</span> Dry Fabrications</p>
+  </footer>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    var links  = document.querySelectorAll('.nav a[data-tab]');
+    var panels = document.querySelectorAll('.panel');
+
+    function show(tab) {
+      panels.forEach(function (p) { p.hidden = (p.id !== tab); });
+      links.forEach(function (a) {
+        a.classList.toggle('active', a.dataset.tab === tab);
+      });
+    }
+
+    // Respond to nav clicks
+    links.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var tab = a.dataset.tab;
+        show(tab);
+        history.replaceState(null, '', '#' + tab);
+      });
+    });
+
+    // Open the section named in the URL hash, else default to About
+    var start = (location.hash || '#about').slice(1);
+    var valid = ['about', 'games', 'team', 'contact'];
+    show(valid.indexOf(start) !== -1 ? start : 'about');
   </script>
 </body>
 </html>
