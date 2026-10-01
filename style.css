@@ -50,6 +50,16 @@ html, body {
   z-index: 9999;
 }
 
+/* ---- faded logo mark, top-right (full/native size) ---- */
+.corner-logo {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 5;
+}
+
 /* ---- header: large plain-text title top-left + nav ---- */
 .site-head {
   padding: 1.5rem 1.25rem 1rem;
