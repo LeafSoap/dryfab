@@ -78,6 +78,8 @@
           break;
 
         case "p":
+          // Separate consecutive paragraphs with a blank line.
+          if (lines.length && lines[lines.length - 1] !== "") lines.push("");
           wrap(item.text, inner).forEach(function (l) { lines.push(l); });
           break;
 
