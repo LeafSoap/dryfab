@@ -50,14 +50,19 @@ html, body {
   z-index: 9999;
 }
 
-/* ---- faded logo mark, top-right (full/native size) ---- */
+/* ---- faded logo mark, top-right ---- */
 .corner-logo {
   position: fixed;
   top: 1rem;
   right: 1rem;
+  width: 144px;
+  height: auto;
   opacity: 0.3;
   pointer-events: none;
   z-index: 5;
+}
+@media (max-width: 560px) {
+  .corner-logo { width: 104px; top: 0.75rem; right: 0.75rem; }
 }
 
 /* ---- header: large plain-text title top-left + nav ---- */
