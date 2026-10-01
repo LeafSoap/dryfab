@@ -171,7 +171,12 @@
     try {
       data = JSON.parse(el.getAttribute("data-box"));
     } catch (e) {
-      return; // leave the raw fallback text in place
+      // Leave the raw fallback text in place, but surface the error so a
+      // malformed data-box (e.g. an unescaped apostrophe) isn't silent.
+      if (window.console && console.warn) {
+        console.warn("ascii-box: could not parse data-box, showing raw text.", e);
+      }
+      return;
     }
 
     // Available width: the panel/container the box lives in.
