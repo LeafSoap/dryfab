@@ -71,6 +71,13 @@
     var lines = [];
     var hang = "  "; // hanging indent for bullet continuation
 
+    // Pre-pass: widest left label across all "row" items, so names form a
+    // clean aligned column with the roles starting at the same spot.
+    var rowLeftW = 0;
+    items.forEach(function (it) {
+      if (it.type === "row") rowLeftW = Math.max(rowLeftW, (it.left || "").length);
+    });
+
     items.forEach(function (item) {
       switch (item.type) {
         case "gap":
@@ -117,6 +124,22 @@
           } else {
             lines.push(left);
             lines.push(repeat(" ", Math.max(0, inner - right.length)) + right);
+          }
+          break;
+
+        case "row":
+          // "left - right" with left padded to a shared column width, so a
+          // group of rows (e.g. name - role) lines up cleanly.
+          var rl = item.left || "";
+          var rr = item.right || "";
+          var padded = padRight(rl, rowLeftW);
+          var oneLine = padded + " - " + rr;
+          if (oneLine.length <= inner) {
+            lines.push(oneLine);
+          } else {
+            // too narrow for a shared column: stack role under the name
+            lines.push(rl);
+            wrap(rr, inner - 4).forEach(function (l) { lines.push("    " + l); });
           }
           break;
 
