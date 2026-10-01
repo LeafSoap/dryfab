@@ -103,12 +103,22 @@ html, body {
   text-align: left;
 }
 
-/* footer */
+/* footer — locked to the bottom of the viewport so it stays put when
+   tab content changes height */
 .foot {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
   text-align: center;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg);
+  z-index: 10;
 }
 .dim { color: var(--comment); margin: 0; }
+
+/* keep content clear of the fixed footer */
+.terminal { padding-bottom: 3.5rem; }
 
 @media (prefers-reduced-motion: reduce) {
   .scanlines { display: none; }
