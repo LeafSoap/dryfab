@@ -54,8 +54,8 @@ html, body {
 /* logo.png is 454x176; 50% size = 227px wide */
 .corner-logo {
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 1.25rem;
+  right: 1.25rem;
   width: 227px;
   height: auto;
   opacity: 0.3;
