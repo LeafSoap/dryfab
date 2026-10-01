@@ -75,8 +75,9 @@ html, body {
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.02em;
-  /* left-to-right gradient: Dracula green -> cyan, clipped to the text */
-  background: linear-gradient(to right, var(--green), var(--cyan));
+  /* left-to-right gradient: Dracula green -> cyan, clipped to the text.
+     Stops are weighted so the right side reads clearly blue/cyan. */
+  background: linear-gradient(to right, var(--green) 0%, var(--cyan) 65%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -130,6 +131,8 @@ html, body {
   width: max-content;
   white-space: pre;
 }
+/* box title label, e.g. [ ABOUT ] — yellow, matching the links */
+.box-title { color: var(--yellow); }
 
 /* footer — locked to the bottom of the viewport so it stays put when
    tab content changes height */

@@ -214,8 +214,26 @@
     var fit = Math.floor(availPx / cw) - 4;
     var cols = Math.max(MIN_COLS, Math.min(MAX_COLS, fit));
 
-    el.textContent = draw(data, cols);
+    var text = draw(data, cols);
+
+    // Render as HTML so the title label can be colored, but escape first
+    // so the box content is treated as plain text (no injection).
+    var html = escapeHtml(text);
+    if (data.title) {
+      var label = "[ " + data.title + " ]";
+      var escLabel = escapeHtml(label);
+      // Only the title lives on the top border line; replace its one match.
+      html = html.replace(escLabel, '<span class="box-title">' + escLabel + "</span>");
+    }
+    el.innerHTML = html;
     el.classList.add("drawn");
+  }
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
   }
 
   function renderAll() {
