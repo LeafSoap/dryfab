@@ -130,6 +130,55 @@ html, body {
 /* project name lines ("> MANGO", etc.) — Dracula red */
 .proj-title { color: var(--red); }
 
+/* ---- contact form (mockup) ---- */
+.contact-wrap {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.contact-form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.field { display: flex; flex-direction: column; gap: 0.35rem; }
+.field label {
+  color: var(--comment);
+}
+.field label::before { content: "> "; }
+.contact-form input,
+.contact-form textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid var(--comment);
+  padding: 0.5rem 0.6rem;
+  width: 100%;
+}
+.contact-form textarea { resize: vertical; }
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--cyan);
+}
+.cf-submit {
+  align-self: flex-start;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--yellow);
+  background: transparent;
+  border: none;
+  padding: 0.25rem 0;
+  cursor: pointer;
+}
+.cf-submit:hover { color: var(--bg); background: var(--yellow); }
+.cf-submit:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+.cf-status { margin: 0; min-height: 1.4em; }
+.cf-status.ok  { color: var(--green); }
+.cf-status.err { color: var(--red); }
+
 /* footer — locked to the bottom of the viewport so it stays put when
    tab content changes height */
 .foot {
