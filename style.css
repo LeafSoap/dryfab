@@ -12,6 +12,7 @@
   --yellow:  #f1fa8c; /* links and box titles */
   --green:   #50fa7b; /* title gradient start */
   --cyan:    #8be9fd; /* title gradient end */
+  --red:     #ff5555; /* project titles */
 
   --mono: "Cascadia Code", "Consolas", "SFMono-Regular", "Menlo",
           "DejaVu Sans Mono", monospace;
@@ -126,6 +127,8 @@ html, body {
 }
 /* box title label, e.g. [ ABOUT ] — yellow, matching the links */
 .box-title { color: var(--yellow); }
+/* project name lines ("> MANGO", etc.) — Dracula red */
+.proj-title { color: var(--red); }
 
 /* footer — locked to the bottom of the viewport so it stays put when
    tab content changes height */

@@ -223,7 +223,22 @@
 
     // Render as HTML so the title label can be colored, but escape first
     // so the box content is treated as plain text (no injection).
-    var html = escapeHtml(text);
+    var escaped = escapeHtml(text);
+
+    // Color project-title lines (content begins with "> ") in red. Done per
+    // line, wrapping only the visible text so the box borders stay plain.
+    var html = escaped.split("\n").map(function (line) {
+      // Project-title line: "|" + pad + "> NAME" + (optional 2+ space gap +
+      // trailing status) + pad + "|". Color only the "> NAME" part red;
+      // leave any right-aligned status (e.g. "(in development)") plain.
+      var mm = line.match(/^(\|\s+)(&gt; \S[^\n]*?)(\s{2,}.*)?(\s*\|)$/);
+      if (mm) {
+        return mm[1] + '<span class="proj-title">' + mm[2] + "</span>" +
+               (mm[3] || "") + mm[4];
+      }
+      return line;
+    }).join("\n");
+
     if (data.title) {
       var label = "[ " + data.title + " ]";
       var escLabel = escapeHtml(label);
