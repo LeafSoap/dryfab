@@ -128,32 +128,30 @@ A cooperative 3D top-down twin-stick shooter. Drop into a squad of 4-8, fight re
         <pre class="ascii-box" data-box='{
           "title": "CONTACT",
           "items": [
-            { "type": "p", "text": "Get in touch and we will get back to you." },
-            { "type": "gap" },
-            { "type": "kv", "key": "email", "val": "dryfabrications@gmail.com" }
+            { "type": "p", "text": "Dry Fabrications builds custom software for businesses, from web applications and internal tools to automation systems, with specialized experience in game and real-time development." },
+            { "type": "p", "text": "Have a project in mind or a problem to solve? Send us a message using the form below and we will get back to you shortly." }
           ]
-        }'>Get in touch and we will get back to you.
+        }'>Dry Fabrications builds custom software for businesses, from web applications and internal tools to automation systems, with specialized experience in game and real-time development.
 
-email ....  dryfabrications@gmail.com</pre>
+Have a project in mind or a problem to solve? Send us a message using the form below and we will get back to you shortly.</pre>
 
         <!-- Contact form (mockup — no backend on GitHub Pages; submission is
-             intercepted and shown as a success message. Wire the form's
-             action to a real endpoint when hosting allows it.) -->
+             intercepted. Validate client-side, clear on success, show a
+             message. Wire a real "action" when hosting allows it.) -->
         <form class="contact-form" novalidate>
           <div class="field">
-            <label for="cf-name">name</label>
-            <input id="cf-name" name="name" type="text" autocomplete="name" required />
+            <label for="cf-name">name <span class="field-err" data-for="name"></span></label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" />
           </div>
           <div class="field">
-            <label for="cf-email">email</label>
-            <input id="cf-email" name="email" type="email" autocomplete="email" required />
+            <label for="cf-email">email <span class="field-err" data-for="email"></span></label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" />
           </div>
           <div class="field">
-            <label for="cf-message">message</label>
-            <textarea id="cf-message" name="message" rows="5" required></textarea>
+            <label for="cf-message">message <span class="field-err" data-for="message"></span></label>
+            <textarea id="cf-message" name="message" rows="5"></textarea>
           </div>
           <button type="submit" class="cf-submit">[ send ]</button>
-          <p class="cf-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
@@ -196,26 +194,57 @@ email ....  dryfabrications@gmail.com</pre>
     show(valid.indexOf(start) !== -1 ? start : 'about');
 
     // Contact form — MOCKUP ONLY. No backend on GitHub Pages, so nothing is
-    // actually sent. Validate the fields and show a success message. Replace
-    // this handler (and give the form a real "action") when a backend exists.
+    // actually sent. Validate the fields; on success clear everything and show
+    // a message. Replace this handler (give the form a real "action") later.
     var form = document.querySelector('.contact-form');
     if (form) {
-      var status = form.querySelector('.cf-status');
+      var fieldErrs = form.querySelectorAll('.field-err');
+      var fieldNames = ['name', 'email', 'message'];
+      var messageField = form.elements['message'];
+      var CONFIRM = "Message submitted, we'll get back to you shortly.";
+
+      function clearErrors() {
+        fieldErrs.forEach(function (el) { el.textContent = ''; });
+      }
+
+      // When the user starts editing the message again, drop the confirmation
+      // state so they get a normal, editable field back.
+      messageField.addEventListener('input', function () {
+        messageField.classList.remove('confirmed', 'readonly');
+        messageField.readOnly = false;
+      });
+      messageField.addEventListener('focus', function () {
+        if (messageField.classList.contains('confirmed')) {
+          messageField.value = '';
+          messageField.classList.remove('confirmed');
+          messageField.readOnly = false;
+        }
+      });
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        var name = form.elements['name'].value.trim();
-        var email = form.elements['email'].value.trim();
-        var message = form.elements['message'].value.trim();
-        var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        clearErrors();
 
-        if (!name || !message || !emailOk) {
-          status.className = 'cf-status err';
-          status.textContent = '> please fill in a valid name, email, and message.';
-          return;
-        }
-        status.className = 'cf-status ok';
-        status.textContent = "Message submitted, we'll get back to you shortly.";
-        form.reset();
+        // Flag every empty field with "Field Empty".
+        var hasEmpty = false;
+        fieldNames.forEach(function (fname) {
+          var value = form.elements[fname].value.trim();
+          if (!value) {
+            hasEmpty = true;
+            var errEl = form.querySelector('.field-err[data-for="' + fname + '"]');
+            if (errEl) errEl.textContent = 'Field Empty';
+          }
+        });
+
+        if (hasEmpty) return;
+
+        // All fields filled — clear name/email, and put the confirmation
+        // text right inside the message field (shown in green).
+        form.elements['name'].value = '';
+        form.elements['email'].value = '';
+        messageField.value = CONFIRM;
+        messageField.readOnly = true;
+        messageField.classList.add('confirmed');
       });
     }
   </script>
