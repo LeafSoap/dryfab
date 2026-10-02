@@ -21,7 +21,6 @@
     <nav class="nav" aria-label="primary">
       <a href="#about"    data-tab="about"   class="active">[ about ]</a>
       <a href="#projects" data-tab="projects">[ projects ]</a>
-      <a href="#team"     data-tab="team">[ team ]</a>
       <a href="#contact"  data-tab="contact">[ contact ]</a>
     </nav>
   </header>
@@ -75,24 +74,6 @@ A cooperative 3D top-down twin-stick shooter. Drop into a squad of 4-8, fight re
 - Objective-driven missions on modular, procedurally assembled maps.</pre>
     </section>
 
-    <!-- ===================== TEAM ===================== -->
-    <section class="panel" id="team" hidden>
-      <pre class="ascii-box" data-box='{
-        "title": "TEAM",
-        "items": [
-          { "type": "p", "text": "A very small crew of people who like making things out of nothing." },
-          { "type": "gap" },
-          { "type": "row", "left": "Alex \"LeafSoap\"",      "right": "Lead Developer" },
-          { "type": "row", "left": "Daniel \"MrDantastic\"", "right": "Game Design" },
-          { "type": "row", "left": "\"John Fabrications\"",  "right": "Community" }
-        ]
-      }'>A very small crew of people who like making things out of nothing.
-
-Alex "LeafSoap"      - Lead Developer
-Daniel "MrDantastic" - Game Design
-"John Fabrications"  - Community</pre>
-    </section>
-
     <!-- ===================== CONTACT ===================== -->
     <section class="panel" id="contact" hidden>
       <pre class="ascii-box" data-box='{
@@ -137,7 +118,7 @@ Daniel "MrDantastic" - Game Design
 
     // Open the section named in the URL hash, else default to About
     var start = (location.hash || '#about').slice(1);
-    var valid = ['about', 'projects', 'team', 'contact'];
+    var valid = ['about', 'projects', 'contact'];
     show(valid.indexOf(start) !== -1 ? start : 'about');
   </script>
 </body>
