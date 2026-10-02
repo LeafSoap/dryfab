@@ -30,6 +30,20 @@ html, body {
   line-height: 1.4;
 }
 
+/* Hide the scrollbar everywhere while keeping the page scrollable. Keeping
+   overflow-y constant also prevents content from shifting left/right when a
+   taller tab (e.g. Products) would otherwise add a scrollbar. */
+html {
+  overflow-y: scroll;      /* always "scrollable" so width never changes */
+  scrollbar-width: none;   /* Firefox: hide the bar */
+  -ms-overflow-style: none;/* old Edge/IE: hide the bar */
+}
+html::-webkit-scrollbar {  /* Chrome, Safari, new Edge: hide the bar */
+  width: 0;
+  height: 0;
+  display: none;
+}
+
 /* faint scanline overlay, tinted with Selection so it stays on-palette */
 .scanlines {
   position: fixed;
