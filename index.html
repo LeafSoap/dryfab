@@ -20,7 +20,7 @@
     <h1 class="title">Dry Fabrications</h1>
     <nav class="nav" aria-label="primary">
       <a href="#about"    data-tab="about"   class="active">[ about ]</a>
-      <a href="#projects" data-tab="projects">[ projects ]</a>
+      <a href="#products" data-tab="products">[ products ]</a>
       <a href="#contact"  data-tab="contact">[ contact ]</a>
     </nav>
   </header>
@@ -50,10 +50,10 @@ In addition to our core software services, Dry Fabrications has been contracted 
 Building on that experience, we have also begun development on our own original game title. It represents a natural evolution of our work, combining the technical discipline of our software practice with our growing passion for building engaging, polished interactive experiences.</pre>
     </section>
 
-    <!-- ===================== PROJECTS ===================== -->
-    <section class="panel" id="projects" hidden>
+    <!-- ===================== PRODUCTS ===================== -->
+    <section class="panel" id="products" hidden>
       <pre class="ascii-box" data-box='{
-        "title": "PROJECTS",
+        "title": "PRODUCTS",
         "items": [
           { "type": "p", "text": "> MANGO" },
           { "type": "p", "text": "An encrypted chat client built for secure internal messaging in commercial environments, keeping team communication private and protected. A personal edition is also available as a privacy-focused alternative to popular consumer chat applications, bringing the same end-to-end security to everyday use." },
@@ -146,7 +146,7 @@ A cooperative 3D top-down twin-stick shooter. Drop into a squad of 4-8, fight re
 
     // Open the section named in the URL hash, else default to About
     var start = (location.hash || '#about').slice(1);
-    var valid = ['about', 'projects', 'contact'];
+    var valid = ['about', 'products', 'contact'];
     show(valid.indexOf(start) !== -1 ? start : 'about');
   </script>
 </body>
