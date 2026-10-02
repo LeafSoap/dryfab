@@ -27,7 +27,7 @@ rendered in an ASCII / terminal aesthetic. The tone is professional, not indie.
 ## Important content facts
 - Company name is written "Dry Fabrications" (normal capitalization).
 - Founded in 2021.
-- Contact: email dryfabrications@gmail.com (the only contact method listed).
+- Contact is handled through a form in the Contact section (no email address is listed on the site).
 - The Projects section features the studio's own game title, "SWAT: Guardian"
   (in development). Game-specific detail lives in the SWAT Guardian project, not here.
 
