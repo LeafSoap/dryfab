@@ -225,15 +225,17 @@
     // so the box content is treated as plain text (no injection).
     var escaped = escapeHtml(text);
 
-    // Color project-title lines (content begins with "> ") in red. Done per
-    // line, wrapping only the visible text so the box borders stay plain.
+    // Color heading lines (content begins with "> "). Each box may set its own
+    // "headingClass" (defaults to proj-title). Done per line, wrapping only the
+    // visible text so the box borders stay plain.
+    var headingClass = data.headingClass || "proj-title";
     var html = escaped.split("\n").map(function (line) {
-      // Project-title line: "|" + pad + "> NAME" + (optional 2+ space gap +
-      // trailing status) + pad + "|". Color only the "> NAME" part red;
-      // leave any right-aligned status (e.g. "(in development)") plain.
+      // Heading line: "|" + pad + "> NAME" + (optional 2+ space gap + trailing
+      // status) + pad + "|". Color only the "> NAME" part; leave any
+      // right-aligned status (e.g. "(in development)") plain.
       var mm = line.match(/^(\|\s+)(&gt; \S[^\n]*?)(\s{2,}.*)?(\s*\|)$/);
       if (mm) {
-        return mm[1] + '<span class="proj-title">' + mm[2] + "</span>" +
+        return mm[1] + '<span class="' + headingClass + '">' + mm[2] + "</span>" +
                (mm[3] || "") + mm[4];
       }
       return line;

@@ -143,6 +143,8 @@ html::-webkit-scrollbar {  /* Chrome, Safari, new Edge: hide the bar */
 .box-title { color: var(--yellow); }
 /* project name lines ("> MANGO", etc.) — Dracula red */
 .proj-title { color: var(--red); }
+/* solutions section headings ("> CUSTOM SOFTWARE...", etc.) — Dracula cyan */
+.sol-title { color: var(--cyan); }
 
 /* ---- contact form (mockup) ---- */
 .contact-wrap {
