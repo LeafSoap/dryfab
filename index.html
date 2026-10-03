@@ -17,7 +17,7 @@
 
   <!-- ===================== HEADER (top-left title + nav) ===================== -->
   <header class="site-head">
-    <h1 class="title">Dry Fabrications</h1>
+    <h1 class="title"><a href="#about" data-tab="about">Dry Fabrications</a></h1>
     <nav class="nav" aria-label="primary">
       <a href="#about"     data-tab="about"   class="active">[ about ]</a>
       <a href="#solutions" data-tab="solutions">[ solutions ]</a>
@@ -194,8 +194,8 @@ Have a project in mind or a problem to solve? Send us a message using the form b
       if (window.AsciiBox) window.AsciiBox.renderAll();
     }
 
-    // Respond to nav clicks
-    links.forEach(function (a) {
+    // Respond to clicks on anything with data-tab (nav links + the title).
+    document.querySelectorAll('[data-tab]').forEach(function (a) {
       a.addEventListener('click', function (e) {
         e.preventDefault();
         var tab = a.dataset.tab;

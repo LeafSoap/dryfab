@@ -92,6 +92,14 @@ html::-webkit-scrollbar {  /* Chrome, Safari, new Edge: hide the bar */
   -webkit-text-fill-color: transparent;
   color: var(--cyan); /* fallback for browsers without background-clip: text */
 }
+/* title is a link back to About — keep the gradient, drop link styling */
+.title a {
+  color: inherit;
+  text-decoration: none;
+  background: none;
+  cursor: pointer;
+}
+.title a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
 
 /* navigation — links in yellow */
 .nav {
